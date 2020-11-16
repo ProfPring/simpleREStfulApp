@@ -1,0 +1,53 @@
+<template>
+  <h2 class="title">${heading}</h2>
+
+  <form role="form" submit.delegate="submit()">
+
+    <fieldset class="box">
+      <legend>User Details</legend>
+      <div class="field">
+
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" checked.bind="person.authorised" name="authorised" /> Authorised
+          </label>
+        </div>
+
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" checked.bind="person.enabled" name="enabled" /> Enabled
+          </label>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <fieldset class="box">
+      <legend>Favourate Colours</legend>
+      <div class="field">
+
+        <div class="control" repeat.for="colour of colourOptions">
+          <label class="checkbox">
+            <input type="checkbox" model.bind="colour" checked.bind="person.colours" matcher.bind="colourMatcher" name="colours"
+            /> ${colour.name}
+          </label>
+        </div>
+
+      </div>
+
+    </fieldset>
+
+    <div class="field is-grouped">
+
+      <div class="control">
+        <input class="button is-link" type="submit" value="Save Changes" />
+      </div>
+
+      <div class="control">
+        <button class="button is-light" click.delegate="cancel()">Cancel</button>
+      </div>
+
+    </div>
+
+  </form>
+</template>
